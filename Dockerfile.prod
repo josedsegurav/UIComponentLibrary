@@ -1,0 +1,23 @@
+FROM node:22.11.0 AS build
+
+WORKDIR /segura_jose_ui_garden
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+# Ensure the public directory exists to prevent Storybook build errors
+RUN mkdir -p ./public
+
+RUN npm run build-storybook
+
+# Ensure the build output exists before copying
+RUN ls -l /segura_jose_ui_garden/storybook-static
+
+FROM nginx:1.25.1
+COPY --from=build /segura_jose_ui_garden/storybook-static /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+

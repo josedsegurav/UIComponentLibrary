@@ -1,0 +1,1 @@
+{"version":3,"file":"button.types.jsx","sourceRoot":"","sources":["button.types.tsx"],"names":[],"mappings":"","sourcesContent":["export interface ButtonProps {\r\n    label: string\r\n}"]}

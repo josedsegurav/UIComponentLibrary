@@ -1,0 +1,13 @@
+FROM node:22.11.0
+
+WORKDIR /Segura_Jose_ui_garden
+
+COPY package*.json ./
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 6006
+
+CMD ["npm", "run", "storybook"]

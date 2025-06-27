@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  segura_jose_coding_assignment12:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    image: segura_jose_ui_garden
+    ports:
+      - "8083:80"
+    container_name: segura_jose_coding_assignment12
+
+
+
+
