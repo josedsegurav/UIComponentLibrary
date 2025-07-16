@@ -2,8 +2,8 @@ import { TableFooterProps } from "./tableFooter.types";
 import styled from "styled-components";
 
 const StyledTableFooter = styled.tfoot<Omit<TableFooterProps, "content">>`
-display: table-footer-group;
-border-top: 2px solid #e5e7eb;
+  display: table-footer-group;
+  border-top: 2px solid #e5e7eb;
   padding: 1rem;
   background-color: ${({ $backgroundColor }) => $backgroundColor || "#f0f0f0"};
 

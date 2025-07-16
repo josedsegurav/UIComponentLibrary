@@ -1,7 +1,6 @@
 import { DropdownProps } from "./dropdown.types";
 import styled from "styled-components";
 
-
 const StyledSelect = styled.select<DropdownProps>`
   /* Reset default styles */
   -webkit-appearance: none;
@@ -11,7 +10,7 @@ const StyledSelect = styled.select<DropdownProps>`
   border: 2px solid #e1e5e9;
   border-radius: 6px;
   outline: none;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -33,9 +32,12 @@ const StyledSelect = styled.select<DropdownProps>`
   /* Responsive padding based on size */
   padding: ${({ $size }) => {
     switch ($size) {
-      case 'small': return 'clamp(6px, 1.5vw, 8px) clamp(32px, 8vw, 40px) clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 16px)';
-      case 'large': return 'clamp(12px, 3vw, 16px) clamp(40px, 10vw, 48px) clamp(12px, 3vw, 16px) clamp(16px, 4vw, 20px)';
-      default: return 'clamp(8px, 2vw, 12px) clamp(36px, 9vw, 44px) clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)'; // medium
+      case "small":
+        return "clamp(6px, 1.5vw, 8px) clamp(32px, 8vw, 40px) clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 16px)";
+      case "large":
+        return "clamp(12px, 3vw, 16px) clamp(40px, 10vw, 48px) clamp(12px, 3vw, 16px) clamp(16px, 4vw, 20px)";
+      default:
+        return "clamp(8px, 2vw, 12px) clamp(36px, 9vw, 44px) clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)"; // medium
     }
   }};
 
@@ -91,7 +93,6 @@ const StyledSelect = styled.select<DropdownProps>`
     }
   }
 `;
-
 
 export const Dropdown = ({
   $size = "medium",

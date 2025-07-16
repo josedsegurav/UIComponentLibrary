@@ -22,7 +22,7 @@ describe("Table Header Component", () => {
   it("applies custom color", () => {
     const customColor = "#ff5733";
     render(<TableHeader {...defaultProps} $backgroundColor={customColor} />);
-    const text= screen.getByText("Table Header Content");
+    const text = screen.getByText("Table Header Content");
     expect(text).toHaveStyle({ backgroundColor: customColor });
   });
 
@@ -30,12 +30,13 @@ describe("Table Header Component", () => {
     const sizeTests = [
       { size: "large" as const, expectedFontSize: "16px" },
       { size: "small" as const, expectedFontSize: "12px" },
-
     ];
 
     sizeTests.forEach(({ size, expectedFontSize }, index) => {
       render(<TableHeader {...defaultProps} $size={size} />);
-      const text = screen.getAllByText("Table Header Content")[index] as HTMLButtonElement;
+      const text = screen.getAllByText("Table Header Content")[
+        index
+      ] as HTMLButtonElement;
 
       expect(text).toHaveStyle(`font-size: ${expectedFontSize}`);
     });
@@ -45,12 +46,13 @@ describe("Table Header Component", () => {
     const weightTests = [
       { weight: "normal" as const, expectedWeight: "100" },
       { weight: "bold" as const, expectedWeight: "600" },
-
     ];
 
     weightTests.forEach(({ weight, expectedWeight }, index) => {
       render(<TableHeader {...defaultProps} $weight={weight} />);
-      const text = screen.getAllByText("Table Header Content")[index] as HTMLButtonElement;
+      const text = screen.getAllByText("Table Header Content")[
+        index
+      ] as HTMLButtonElement;
 
       expect(text).toHaveStyle(`font-weight: ${expectedWeight}`);
     });

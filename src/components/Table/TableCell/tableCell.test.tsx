@@ -30,7 +30,6 @@ describe("Table Cell Component", () => {
     const sizeTests = [
       { size: "large" as const, expectedFontSize: "16px" },
       { size: "small" as const, expectedFontSize: "12px" },
-
     ];
 
     sizeTests.forEach(({ size, expectedFontSize }, index) => {
@@ -45,7 +44,6 @@ describe("Table Cell Component", () => {
     const weightTests = [
       { weight: "normal" as const, expectedWeight: "100" },
       { weight: "bold" as const, expectedWeight: "600" },
-
     ];
 
     weightTests.forEach(({ weight, expectedWeight }, index) => {

@@ -22,7 +22,7 @@ describe("Text Component", () => {
   it("applies custom color", () => {
     const customColor = "#ff5733";
     render(<Text {...defaultProps} $color={customColor} />);
-    const text= screen.getByText("Text Content");
+    const text = screen.getByText("Text Content");
     expect(text).toHaveStyle({ color: customColor });
   });
 
@@ -30,12 +30,13 @@ describe("Text Component", () => {
     const sizeTests = [
       { size: "large" as const, expectedFontSize: "16px" },
       { size: "small" as const, expectedFontSize: "12px" },
-
     ];
 
     sizeTests.forEach(({ size, expectedFontSize }, index) => {
       render(<Text {...defaultProps} $size={size} />);
-      const text = screen.getAllByText("Text Content")[index] as HTMLButtonElement;
+      const text = screen.getAllByText("Text Content")[
+        index
+      ] as HTMLButtonElement;
 
       expect(text).toHaveStyle(`font-size: ${expectedFontSize}`);
     });
@@ -45,12 +46,13 @@ describe("Text Component", () => {
     const weightTests = [
       { weight: "normal" as const, expectedWeight: "100" },
       { weight: "bold" as const, expectedWeight: "600" },
-
     ];
 
     weightTests.forEach(({ weight, expectedWeight }, index) => {
       render(<Text {...defaultProps} $weight={weight} />);
-      const text = screen.getAllByText("Text Content")[index] as HTMLButtonElement;
+      const text = screen.getAllByText("Text Content")[
+        index
+      ] as HTMLButtonElement;
 
       expect(text).toHaveStyle(`font-weight: ${expectedWeight}`);
     });

@@ -5,17 +5,20 @@ A Docker-containerized component library project for building and showcasing reu
 ## Prerequisites
 
 Ensure Docker is installed on your local machine:
+
 - [Download Docker](https://www.docker.com/get-started)
 
 ## Getting Started
 
 1. **Clone the repository**
+
    ```
    git clone https://github.com/josedsegurav/component_library.git
    cd component_library
    ```
 
 2. **Build and run the application**
+
    ```
    docker-compose -f docker-compose.prod.yml up --build
    ```
@@ -31,10 +34,13 @@ The component library will be available at the local development server. Browse 
 ## Stopping the Application
 
 To stop the running container:
+
 ```
 Ctrl + C
 ```
+
 To remove the container:
+
 ```
 docker-compose -f docker-compose.prod.yml down
 ```

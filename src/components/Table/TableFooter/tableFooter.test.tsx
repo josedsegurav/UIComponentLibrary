@@ -23,7 +23,6 @@ describe("Table Footer Component", () => {
     $backgroundColor: undefined,
     disabled: false,
     testID: "table-footer-test",
-
   };
 
   it("renders with default props", () => {
@@ -47,7 +46,9 @@ describe("Table Footer Component", () => {
 
     sizeTests.forEach(({ size, expectedPadding }, index) => {
       render(<TableFooter {...defaultProps} $size={size} />);
-      const tableFooter = screen.getAllByTestId("table-footer-test")[index] as HTMLButtonElement;
+      const tableFooter = screen.getAllByTestId("table-footer-test")[
+        index
+      ] as HTMLButtonElement;
 
       expect(tableFooter).toHaveStyle(`padding: ${expectedPadding}`);
     });
@@ -73,4 +74,3 @@ describe("Table Footer Component", () => {
     expect(tableFooter).toHaveStyle("cursor: not-allowed");
   });
 });
-

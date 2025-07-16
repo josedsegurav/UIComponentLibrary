@@ -34,14 +34,21 @@ describe("Button Component", () => {
 
   it("applies different sizes correctly", () => {
     const sizeTests = [
-      { size: "large" as const, expectedFontSize: "clamp(1rem, 3vw, 1.125rem)" },
-      { size: "small" as const, expectedFontSize: "clamp(0.75rem, 2vw, 0.875rem)" },
-
+      {
+        size: "large" as const,
+        expectedFontSize: "clamp(1rem, 3vw, 1.125rem)",
+      },
+      {
+        size: "small" as const,
+        expectedFontSize: "clamp(0.75rem, 2vw, 0.875rem)",
+      },
     ];
 
     sizeTests.forEach(({ size, expectedFontSize }, index) => {
       render(<Button {...defaultProps} $size={size} />);
-      const button = screen.getAllByText("Click Me")[index] as HTMLButtonElement;
+      const button = screen.getAllByText("Click Me")[
+        index
+      ] as HTMLButtonElement;
 
       expect(button).toHaveStyle(`font-size: ${expectedFontSize}`);
     });

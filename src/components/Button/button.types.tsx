@@ -1,5 +1,5 @@
 export interface ButtonProps {
-    id?: string;
+  id?: string;
   /** Is this the principal call to action on the page? */
   $primary?: boolean;
   /** What background color to use */

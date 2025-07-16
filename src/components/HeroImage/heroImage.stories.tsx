@@ -5,7 +5,7 @@ const meta = {
   title: "Component/HeroImage",
   component: HeroImageComponent,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {

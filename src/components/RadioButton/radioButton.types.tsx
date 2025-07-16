@@ -1,7 +1,7 @@
 export interface RadioButtonProps {
-    id?: string;
-    disabled?: boolean;
-    name: string;
-    value: string;
-    checked?: boolean;
+  id?: string;
+  disabled?: boolean;
+  name: string;
+  value: string;
+  checked?: boolean;
 }

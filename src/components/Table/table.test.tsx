@@ -103,7 +103,6 @@ describe("Table Component", () => {
     expect(footer).toBeInTheDocument();
   });
 
-
   it("is disabled when disabled prop is true", () => {
     render(<Table {...defaultProps} disabled />);
     const table = screen.getByRole("table");

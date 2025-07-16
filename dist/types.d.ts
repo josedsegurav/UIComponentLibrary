@@ -1,7 +1,7 @@
-import * as react_jsx_runtime from 'react/jsx-runtime';
+import * as react_jsx_runtime from "react/jsx-runtime";
 
 interface ButtonProps {
-    label: string;
+  label: string;
 }
 
 declare function Button(props: ButtonProps): react_jsx_runtime.JSX.Element;

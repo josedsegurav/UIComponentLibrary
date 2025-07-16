@@ -41,7 +41,10 @@ describe("HeroImageComponent", () => {
   it("is disabled when disabled is true", () => {
     render(<HeroImageComponent {...defaultProps} disabled={true} />);
     const heroContainer = screen.getByTestId("hero-container");
-    expect(heroContainer).toHaveStyle({ opacity: "0.5", cursor: "not-allowed" });
+    expect(heroContainer).toHaveStyle({
+      opacity: "0.5",
+      cursor: "not-allowed",
+    });
   });
 
   it("handles empty src gracefully", () => {

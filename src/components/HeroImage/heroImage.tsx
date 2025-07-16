@@ -40,9 +40,9 @@ const HeroContainer = styled.div<HeroContainerProps>`
     }};
   }
 
-    /* Disabled state */
-    opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
-    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  /* Disabled state */
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
 const HeroImage = styled.img`
@@ -96,7 +96,10 @@ const HeroTitle = styled.h1`
   margin: 0 0 16px 0;
   line-height: 1.2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 
   @media (max-width: 768px) {
     margin-bottom: 12px;
@@ -109,40 +112,13 @@ const HeroSubtitle = styled.p`
   margin: 0 0 24px 0;
   line-height: 1.4;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 
   @media (max-width: 768px) {
     margin-bottom: 20px;
-  }
-`;
-
-const HeroButton = styled.button`
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: system-ui, -apple-system, sans-serif;
-
-  &:hover {
-    background: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  @media (max-width: 768px) {
-    padding: 14px 28px;
-    font-size: 18px;
-    width: 100%;
-    max-width: 300px;
   }
 `;
 
@@ -183,7 +159,12 @@ export const HeroImageComponent = ({
   disabled = false,
 }: HeroImageProps) => {
   return (
-    <HeroContainer disabled={disabled} data-testid={testID} height={height} centered={centered}>
+    <HeroContainer
+      disabled={disabled}
+      data-testid={testID}
+      height={height}
+      centered={centered}
+    >
       {src ? (
         <>
           <HeroImage src={src} alt={alt} data-loading={!src} />
@@ -191,7 +172,12 @@ export const HeroImageComponent = ({
           <HeroContent centered={centered}>
             <HeroTitle>Hero Title</HeroTitle>
             <HeroSubtitle>Subtitle goes here</HeroSubtitle>
-            <Button disabled={disabled} label="Call to Action" $size="large" $primary={true} />
+            <Button
+              disabled={disabled}
+              label="Call to Action"
+              $size="large"
+              $primary={true}
+            />
           </HeroContent>
         </>
       ) : (

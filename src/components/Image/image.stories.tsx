@@ -6,7 +6,7 @@ const meta = {
   component: Image,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
+    layout: "centered",
   },
   tags: ["autodocs"],
   argTypes: {
@@ -99,7 +99,7 @@ export const CustomSize: Story = {
   },
 };
 
-export const objectFitFill : Story = {
+export const objectFitFill: Story = {
   args: {
     src: "https://placehold.co/600x400",
     alt: "Placeholder Image",

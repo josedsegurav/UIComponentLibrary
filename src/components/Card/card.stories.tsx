@@ -5,7 +5,7 @@ const meta = {
   title: "Component/Card",
   component: CardComponent,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   tags: ["autodocs"],
   argTypes: {
@@ -93,4 +93,3 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-

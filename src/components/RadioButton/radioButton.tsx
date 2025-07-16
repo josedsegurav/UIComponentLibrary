@@ -1,8 +1,10 @@
 import { RadioButtonProps } from "./radioButton.types";
 import styled from "styled-components";
 
-const StyledRadioButton = styled.input.attrs({type:'radio'})<RadioButtonProps>`
- width: 20px;
+const StyledRadioButton = styled.input.attrs({
+  type: "radio",
+})<RadioButtonProps>`
+  width: 20px;
   height: 20px;
   border: 2px solid #ddd;
   border-radius: 50%;
@@ -20,25 +22,25 @@ const StyledRadioButton = styled.input.attrs({type:'radio'})<RadioButtonProps>`
     cursor: not-allowed;
     opacity: 0.6;
   }
-    /* Checked state */
-    &:checked {
+  /* Checked state */
+  &:checked {
     border-color: #3b82f6; /* Blue border when checked */
     background-color: #3b82f6; /* Blue background when checked */
   }
 `;
 
 export const RadioButton = ({
-    disabled = false,
-    name,
-    value,
-    checked = false,
+  disabled = false,
+  name,
+  value,
+  checked = false,
 }: RadioButtonProps) => {
   return (
-      <StyledRadioButton
-        disabled={disabled}
-        name={name}
-        value={value}
-        checked={checked}
-      />
+    <StyledRadioButton
+      disabled={disabled}
+      name={name}
+      value={value}
+      checked={checked}
+    />
   );
-}
+};

@@ -30,7 +30,7 @@ const Card = styled.div<CardProps>`
 
   /* Hover effects */
   ${({ hover }) =>
-    (hover) &&
+    hover &&
     `
     &:hover {
       transform: translateY(-2px);
@@ -51,8 +51,8 @@ const Card = styled.div<CardProps>`
   @media (max-width: 768px) {
     border-radius: 6px;
 
-    ${({ hover}) =>
-      (hover) &&
+    ${({ hover }) =>
+      hover &&
       `
       &:hover {
         transform: translateY(-1px);
@@ -87,7 +87,10 @@ const CardTitle = styled.h3`
   color: #1f2937;
   margin: 0 0 8px 0;
   line-height: 1.3;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 
   @media (max-width: 768px) {
     font-size: 1.1rem;
@@ -99,7 +102,10 @@ const CardDescription = styled.p`
   color: #6b7280;
   margin: 0 0 16px 0;
   line-height: 1.5;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -132,7 +138,13 @@ export const CardComponent = ({
   ...props
 }: CardContentProps) => {
   return (
-    <Card data-testid={props.testID} shadow={shadow} hover={hover} disabled={disabled} {...props}>
+    <Card
+      data-testid={props.testID}
+      shadow={shadow}
+      hover={hover}
+      disabled={disabled}
+      {...props}
+    >
       {src && <CardImage src={src} alt={alt} />}
       <CardContent>
         {title && <CardTitle>{title}</CardTitle>}
