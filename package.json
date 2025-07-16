@@ -88,7 +88,7 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --max-warnings=0",
       "prettier --check",
-      "npm run test"
+      "jest --bail --findRelatedTests --passWithNoTests --verbose"
     ],
     "*.{json,md,css,scss}": [
       "prettier --check"
