@@ -26,6 +26,7 @@
   "devDependencies": {
     "@babel/core": "^7.27.4",
     "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
     "@chromatic-com/storybook": "^4.0.0",
     "@eslint/js": "^9.31.0",
@@ -89,9 +90,6 @@
     ],
     "*.{json,md,css,scss}": [
       "prettier --write"
-    ],
-    "*.{js,jsx,ts,tsx,json,md,css,scss}": [
-      "git add"
     ]
   },
   "type": "module"
