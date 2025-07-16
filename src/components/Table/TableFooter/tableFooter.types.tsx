@@ -1,3 +1,4 @@
+import React from "react";
 export interface TableFooterProps {
   children: React.ReactNode;
   /** The background color of the header */

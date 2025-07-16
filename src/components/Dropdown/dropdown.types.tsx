@@ -1,3 +1,4 @@
+import React from "react";
 export interface DropdownProps {
   $size?: "small" | "medium" | "large";
   $backgroundColor?: string;

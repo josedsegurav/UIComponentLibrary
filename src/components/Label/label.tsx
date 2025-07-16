@@ -1,6 +1,5 @@
 import { LabelProps } from "./label.types";
 import styled from "styled-components";
-import { Button } from "../Button/button";
 
 const StyledLabel = styled.label<Omit<LabelProps, "label" | "for">>`
   font-weight: 600;

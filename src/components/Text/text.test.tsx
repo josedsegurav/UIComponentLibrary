@@ -34,9 +34,7 @@ describe("Text Component", () => {
 
     sizeTests.forEach(({ size, expectedFontSize }, index) => {
       render(<Text {...defaultProps} $size={size} />);
-      const text = screen.getAllByText("Text Content")[
-        index
-      ] as HTMLButtonElement;
+      const text = screen.getAllByText("Text Content")[index] as HTMLElement; // Changed from HTMLButtonElement to HTMLElement
 
       expect(text).toHaveStyle(`font-size: ${expectedFontSize}`);
     });
@@ -50,9 +48,7 @@ describe("Text Component", () => {
 
     weightTests.forEach(({ weight, expectedWeight }, index) => {
       render(<Text {...defaultProps} $weight={weight} />);
-      const text = screen.getAllByText("Text Content")[
-        index
-      ] as HTMLButtonElement;
+      const text = screen.getAllByText("Text Content")[index] as HTMLElement; // Changed from HTMLButtonElement to HTMLElement
 
       expect(text).toHaveStyle(`font-weight: ${expectedWeight}`);
     });

@@ -1,3 +1,4 @@
+import React from "react";
 export interface LabelProps {
   /** What background color to use */
   $backgroundColor?: string;

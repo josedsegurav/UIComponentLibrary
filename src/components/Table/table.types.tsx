@@ -1,3 +1,4 @@
+import React from "react";
 export interface TableProps {
   /** How large should the table be? */
   $size?: "small" | "medium" | "large";

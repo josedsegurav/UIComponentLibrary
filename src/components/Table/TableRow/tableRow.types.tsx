@@ -1,3 +1,4 @@
+import React from "react";
 export interface TableRowProps {
   $backgroundColor?: string;
   /** How large should the row be? */
