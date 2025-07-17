@@ -25,7 +25,7 @@ Ensure Docker is installed on your local machine:
 
 3. **Access the application**
 
-   Open your browser and navigate to [http://localhost:8083](http://localhost:8083)
+   Open your browser and navigate to [http://localhost:8018](http://localhost:8018)
 
 ## Usage
 
