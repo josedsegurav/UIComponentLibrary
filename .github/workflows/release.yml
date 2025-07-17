@@ -1,0 +1,190 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+      - alpha
+      - beta
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test and Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4
+
+      - name: "Setup Node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: "Install Dependencies"
+        run: npm ci
+
+      - name: "Lint Code"
+        run: npm run lint
+
+      - name: "Check Prettier"
+        run: npm run format:check
+
+      - name: "Run Tests"
+        run: npm run test
+
+  docker:
+    name: Build container
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4
+
+      - name: "setup buildx"
+        uses: docker/setup-buildx-action@v3
+
+      - name: "cache docker layers"
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: "docker meta"
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: "docker build"
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          outputs: type=docker,dest=/tmp/docker.tar
+          push: false
+          cache-from: type=gha,scope=${{ github.workflow }}
+          cache-to: type=gha,scope=${{ github.workflow }},mode=max
+
+      - name: "docker artifacts"
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker
+          path: /tmp/docker.tar
+
+  build:
+    name: Build application
+    runs-on: ubuntu-latest
+    steps:
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "🔧 setup node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: "📦 install dependencies"
+        run: npm ci
+
+      - name: "📚 build storybook"
+        run: npm run build-storybook
+
+      - name: "📊 repository visualizer"
+        id: diagram
+        uses: githubocto/repo-visualizer@0.9.1
+        with:
+          excluded_paths: "node_modules,dist,storybook-static,.storybook,.github,package-lock.json"
+          output_file: "public/diagram.svg"
+          should_push: false
+          root_path: "src/"
+          artifact_name: "diagram"
+
+      - name: "📂 upload build artifacts"
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 1
+
+      - name: "📂 upload storybook artifacts"
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook
+          path: storybook-static/
+          retention-days: 1
+
+      - name: "📂 upload diagram artifacts"
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagram
+          path: public/diagram.svg
+          retention-days: 1
+
+  deploy:
+    name: Deploy to production
+    needs:
+      - test
+      - docker
+      - build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "📂 download docker artifacts"
+        uses: actions/download-artifact@v4
+        with:
+          name: docker
+          path: /tmp
+
+      - name: "📦 load docker image"
+        run: |
+          docker load --input /tmp/docker.tar
+          docker image ls -a
+
+      - name: "📂 download storybook artifacts"
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook
+          path: storybook-static
+
+      - name: "📂 download diagram artifacts"
+        uses: actions/download-artifact@v4
+        with:
+          name: diagram
+          path: .
+
+      - name: "🚀 deployment ready"
+        run: |
+          echo "✅ All artifacts ready for deployment"
+          echo "🐳 Docker image: $(docker images --format 'table {{.Repository}}:{{.Tag}}')"
+          echo "📚 Storybook built successfully"
+          echo "📊 Repository diagram generated"
+
+  cleanup:
+    name: Cleanup actions
+    needs:
+      - deploy
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: "♻️ remove build artifacts"
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: |
+            dist
+            storybook
+            docker
+            diagram
