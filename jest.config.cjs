@@ -14,7 +14,7 @@ const customJestConfig = {
   testEnvironment: "jest-environment-jsdom",
   testMatch: [
     "**/__tests__/**/*.(ts|tsx|js|jsx)",
-    "**/*.(test|spec).(ts|tsx|js|jsx)"
+    "**/*.(test|spec).(ts|tsx|js|jsx)",
   ],
 };
 
