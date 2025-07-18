@@ -13,7 +13,7 @@ Ensure Docker is installed on your local machine:
 1. **Clone the repository**
 
    ```
-   git clone https://github.com/josedsegurav/component_library.git
+   git clone https://github.com/josedsegurav/UIComponentLibrary.git
    cd component_library
    ```
 
